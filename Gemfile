@@ -20,6 +20,11 @@ gem "tailwindcss-rails"
 gem "jbuilder"
 # User authentication and session management
 gem "devise"
+# Use Redis for caching and background jobs
+gem "redis"
+# Use Sidekiq for background jobs
+gem "sidekiq"
+
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
