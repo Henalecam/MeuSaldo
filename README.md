@@ -19,9 +19,10 @@ Essenciais para lançamento:
 ## Estrutura do Banco de Dados  
 - [ ] Criar modelos:  
   - [x] **User**: Gerenciar usuários  
-  - [ ] **Transaction**: Armazenar receitas e despesas  
-  - [ ] **Category**: Categorizar transações  
-  - [ ] **Goal**: Gerenciar metas financeiras  
+  - [x] **Transaction**: Armazenar receitas e despesas  
+  - [x] **Category**: Categorizar transações  
+  - [ ] **Goal**: Gerenciar metas financeiras
+  - [x] added dashboard  
 - [ ] Configurar associações entre os modelos  
 - [ ] Adicionar validações para os campos principais  
 
@@ -33,7 +34,7 @@ Essenciais para lançamento:
   - [ ] Criar, editar, visualizar e excluir receitas/despesas  
   - [ ] Permitir categorização de transações  
 - [ ] **Dashboard Interativo**  
-  - [ ] Mostrar resumo financeiro (saldo, receitas, despesas)  
+  - [x] Mostrar resumo financeiro (saldo, receitas, despesas)  
   - [ ] Exibir gráficos com Chartkick ou outra biblioteca  
 - [ ] **Orçamento Mensal**  
   - [ ] Permitir definição de limites por categoria  
