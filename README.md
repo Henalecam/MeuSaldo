@@ -1,7 +1,7 @@
 # MeuSaldo
 O Gestor de Finanças Pessoais MeuSaldo é uma aplicação web desenvolvida com Ruby on Rails para ajudar os usuários a organizarem suas finanças de maneira simples e intuitiva. A plataforma permite o controle detalhado de receitas e despesas, além de fornecer ferramentas como gráficos, metas financeiras e orçamentos personalizados para facilitar a visualização e o planejamento financeiro.
 
-Com um dashboard interativo, os usuários têm acesso a relatórios claros e alertas importantes para monitorar sua saúde financeira. A aplicação também oferece segurança avançada para proteger os dados financeiros e recursos como exportação de relatórios e integração com APIs bancárias (opcional).
+Com um dashboard interativo, os usuários têm acesso a relatórios claros e alertas importantes para monitorar sua saúde financeira. A aplicação também oferece segurança avançada para proteger os dados financeiros e recursos como exportação de relatórios e integração com APIs bancárias.
 
 O objetivo do projeto é incentivar hábitos financeiros saudáveis e simplificar a gestão das finanças pessoais de qualquer pessoa, independente do seu nível de conhecimento em finanças.
 
@@ -12,13 +12,13 @@ Essenciais para lançamento:
 # Front-end will be the last part
 
 ## Configuração Inicial  
-- [ ] Criar um novo projeto Rails (`rails new nome_do_projeto`)  
-- [ ] Configurar o banco de dados PostgreSQL  
-- [ ] Adicionar e configurar a gem Devise para autenticação de usuários  
+- [x] Criar um novo projeto Rails (`rails new nome_do_projeto`)  
+- [x] Configurar o banco de dados PostgreSQL  
+- [x] Adicionar e configurar a gem Devise para autenticação de usuários  
 
 ## Estrutura do Banco de Dados  
 - [ ] Criar modelos:  
-  - [ ] **User**: Gerenciar usuários  
+  - [x] **User**: Gerenciar usuários  
   - [ ] **Transaction**: Armazenar receitas e despesas  
   - [ ] **Category**: Categorizar transações  
   - [ ] **Goal**: Gerenciar metas financeiras  
