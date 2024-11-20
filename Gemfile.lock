@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 4df235f7c0149ac7be86580d41a74a7785cb9bb9
+  revision: a8709e6ea26eca73a652af4fdd0a9f7db5352af4
   branch: main
   specs:
     actioncable (8.1.0.alpha)
@@ -251,8 +251,12 @@ GEM
       nokogiri (~> 1.14)
     rainbow (3.1.1)
     rake (13.2.1)
-    rdoc (6.7.0)
+    rdoc (6.8.1)
       psych (>= 4.0.0)
+    redis (5.3.0)
+      redis-client (>= 0.22.0)
+    redis-client (0.22.2)
+      connection_pool
     regexp_parser (2.9.2)
     reline (0.5.11)
       io-console (~> 0.5)
@@ -297,6 +301,11 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    sidekiq (7.3.5)
+      connection_pool (>= 2.3.0)
+      logger
+      rack (>= 2.2.4)
+      redis-client (>= 0.22.2)
     solid_cable (3.0.2)
       actioncable (>= 7.2)
       activejob (>= 7.2)
@@ -382,8 +391,10 @@ DEPENDENCIES
   propshaft
   puma (>= 5.0)
   rails!
+  redis
   rubocop-rails-omakase
   selenium-webdriver
+  sidekiq
   solid_cable
   solid_cache
   solid_queue
