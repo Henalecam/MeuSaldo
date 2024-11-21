@@ -7,6 +7,9 @@ O objetivo do projeto é incentivar hábitos financeiros saudáveis e simplifica
 
 Essenciais para lançamento:
 
+## design:
+https://www.figma.com/design/5LpBxEuQel5sbM6cr6IX2K/Untitled?node-id=0-1&t=NWBjNdckeRE8dv3I-1
+
 # Checklist do Projeto: Gestor de Finanças Pessoais
 
 # Front-end will be the last part
