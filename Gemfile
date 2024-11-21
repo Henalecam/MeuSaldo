@@ -24,6 +24,8 @@ gem "devise"
 gem "redis"
 # Use Sidekiq for background jobs
 gem "sidekiq"
+# Use Annotate to add schema information to models
+gem 'annotaterb'
 
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]

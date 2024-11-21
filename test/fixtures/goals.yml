@@ -1,0 +1,39 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# == Schema Information
+#
+# Table name: goals
+#
+#  id             :bigint           not null, primary key
+#  achieved       :boolean
+#  current_amount :decimal(, )
+#  deadline       :date
+#  name           :string
+#  target_amount  :decimal(, )
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  user_id        :bigint           not null
+#
+# Indexes
+#
+#  index_goals_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
+#
+one:
+  user: one
+  name: MyString
+  target_amount: 9.99
+  current_amount: 9.99
+  deadline: 2024-11-21
+  achieved: false
+
+two:
+  user: two
+  name: MyString
+  target_amount: 9.99
+  current_amount: 9.99
+  deadline: 2024-11-21
+  achieved: false
