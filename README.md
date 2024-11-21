@@ -10,6 +10,7 @@ Essenciais para lançamento:
 ## Planejamento:
 [Figma](https://www.figma.com/design/5LpBxEuQel5sbM6cr6IX2K/Untitled?node-id=0-1&t=NWBjNdckeRE8dv3I-1
 )
+
 [DbDiagram](https://dbdiagram.io/d/MeuSaldo-673f4b22e9daa85aca44820f)
 
 # Checklist do Projeto: Gestor de Finanças Pessoais
