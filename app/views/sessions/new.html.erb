@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title><%= content_for(:title) || "Meu Saldo" %></title>
+    <style>
+
+      .circle {
+        position: absolute;
+        border-radius: 50%; 
+        animation: ripple 15s infinite;
+        box-shadow: 0px 0px 1px 0px #508fb9;
+      }
+
+      .small {
+        width: 200px;
+        height: 200px;
+        left: -100px;
+        bottom: -100px;
+      }
+
+      .medium {
+        width: 400px;
+        height: 400px;
+        left: -200px;
+        bottom: -200px;
+      }
+
+      .large {
+        width: 600px;
+        height: 600px;
+        left: -300px;
+        bottom: -300px;
+      }
+
+      .xlarge {
+        width: 800px;
+        height: 800px;
+        left: -400px;
+        bottom: -400px;
+      }
+
+      @keyframes ripple {
+        0% {
+          transform: scale(0.8);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(0.8);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-log-in-primary h-screen flex items-center justify-center relative overflow-hidden">
+    <!-- Circles animation -->
+    <div class="circle xlarge bg-circle-ring3"></div>
+    <div class="circle large bg-circle-ring2"></div>
+    <div class="circle medium bg-circle-ring"></div>
+    <div class="circle small bg-log-in-secondary"></div>
+
+      <div class="bg-white p-10 rounded-lg shadow-lg w-full max-w-md">
+        <h1 class="text-4xl font-bold text-center text-green-600 mb-6">MEU SALDO</h1>
+        
+        <div class="flex justify-center mb-4">
+          <button class="bg-white text-black flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm hover:bg-gray-100">
+            <%= image_tag 'google.svg', alt: 'Google Logo', class: 'w-5 h-5 mr-2' %>
+            Login com a conta Google
+          </button>
+        </div>
+
+        <form action="/sessions" method="post">
+          <div class="mb-4">
+            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+            <input type="email" id="email" name="email" placeholder="e.g exemplo@mail.com" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" required>
+          </div>
+          
+          <div class="mb-6">
+            <label for="password" class="block text-gray-700 font-medium mb-2">Password</label>
+            <input type="password" id="password" name="password" placeholder="e.g exemplo_password123" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" required>
+          </div>
+          
+          <button type="submit" class="w-full bg-black text-white font-medium py-2 rounded-md hover:bg-gray-800">Sign In</button>
+        </form>
+        
+        <div class="mt-4 text-center">
+          <a href="#" class="text-blue-500 hover:underline">Esqueceu a senha?</a>
+        </div>
+        
+        <div class="mt-2 text-center">
+          <span>Não tem conta? </span>
+          <a href="/register" class="text-blue-500 hover:underline">Registre-se aqui</a>
+        </div>
+      </div>
+  </body>
+</html>
