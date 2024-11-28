@@ -25,9 +25,9 @@ gem "redis"
 # Use Sidekiq for background jobs
 gem "sidekiq"
 # Use Annotate to add schema information to models
-gem 'annotaterb'
+gem "annotaterb"
 
-gem 'omniauth-google-oauth2'
+gem "omniauth-google-oauth2"
 
 
 
