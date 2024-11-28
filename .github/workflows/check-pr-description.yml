@@ -1,0 +1,21 @@
+name: Check PR Description
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  check-description:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check PR Description
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const description = context.payload.pull_request.body;
+            if (!description || description.trim().length < 10) {
+              throw new Error(
+                "A descrição do PR é obrigatória e deve conter pelo menos 10 caracteres."
+              );
+            }
