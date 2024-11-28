@@ -1,0 +1,57 @@
+<style>
+  body {
+    background-color: #9CC7FF;
+    overflow: hidden;
+  }
+  .circle {
+    position: absolute;
+    border-radius: 50%; 
+    animation: ripple 15s infinite;
+    box-shadow: 0px 0px 1px 0px #508fb9;
+  }
+
+  .small {
+    width: 200px;
+    height: 200px;
+    left: -100px;
+    bottom: -100px;
+  }
+
+  .medium {
+    width: 400px;
+    height: 400px;
+    left: -200px;
+    bottom: -200px;
+  }
+
+  .large {
+    width: 600px;
+    height: 600px;
+    left: -300px;
+    bottom: -300px;
+  }
+
+  .xlarge {
+    width: 800px;
+    height: 800px;
+    left: -400px;
+    bottom: -400px;
+  }
+
+  @keyframes ripple {
+    0% {
+      transform: scale(0.8);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(0.8);
+    }
+  }
+</style>
+
+<div class="circle xlarge bg-circle-ring3"></div>
+<div class="circle large bg-circle-ring2"></div>
+<div class="circle medium bg-circle-ring"></div>
+<div class="circle small bg-log-in-secondary"></div>
