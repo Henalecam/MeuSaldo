@@ -32,8 +32,16 @@ async function scrapeEditais() {
             });
         });
 
+        const editaisDetalhados = [];
+        for (const edital of rows) {
+            if (edital.link) {
+                const detalhes = await scrapeLotes(browser, edital.link);
+                editaisDetalhados.push({ ...edital, lotesDetalhes: detalhes });
+            }
+        }
+
         await browser.close();
-        return rows;
+        return editaisDetalhados;
     } catch (error) {
         console.error(`Erro ao acessar ${BASE_URL}: ${error.message}`);
         await browser.close();
@@ -41,7 +49,41 @@ async function scrapeEditais() {
     }
 }
 
-function saveToJson(data, fileName = 'editais.json') {
+async function scrapeLotes(browser, link) {
+    const page = await browser.newPage();
+    await page.goto(link, { waitUntil: 'networkidle2' });
+
+    try {
+        await page.waitForSelector('table.table.table-striped', { timeout: 60000 });
+
+        const lotes = await page.$$eval('tbody tr', rows => {
+            return rows.map(row => {
+                const lote = row.querySelector('td.text-left a') ? row.querySelector('td.text-left a').textContent.trim() : '';
+                const precoMinimo = row.querySelector('td.text-right div.valor-lote') ? row.querySelector('td.text-right div.valor-lote').textContent.trim() : '';
+                const tipo = row.querySelector('td:nth-of-type(3)') ? row.querySelector('td:nth-of-type(3)').textContent.trim() : '';
+                const situacao = row.querySelector('td:nth-of-type(4)') ? row.querySelector('td:nth-of-type(4)').textContent.trim() : '';
+                const avisosErratas = row.querySelector('td.text-center a span') ? row.querySelector('td.text-center a span').textContent.trim() : '';
+
+                return {
+                    lote,
+                    preco_minimo: precoMinimo,
+                    tipo,
+                    situacao,
+                    avisos_erratas: avisosErratas,
+                };
+            });
+        });
+
+        await page.close();
+        return lotes;
+    } catch (error) {
+        console.error(`Erro ao acessar os lotes no link ${link}: ${error.message}`);
+        await page.close();
+        return [];
+    }
+}
+
+function saveToJson(data, fileName = 'editais_completos.json') {
     fs.writeFileSync(fileName, JSON.stringify(data, null, 4), 'utf-8');
     console.log(`Dados salvos em ${fileName}`);
 }
