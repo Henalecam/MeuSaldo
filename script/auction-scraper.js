@@ -74,23 +74,26 @@ async function scrapeLots(browser, notice) {
         while (true) {
             await page.waitForSelector('table.table.table-striped tbody tr', { timeout: 60000 });
 
-            const pageLots = await page.$$eval('tbody tr', rows => {
+            const pageLots = await page.$$eval('tbody tr', (rows, link) => {
                 return rows.map(row => {
                     const lot = row.querySelector('td.text-left a') ? row.querySelector('td.text-left a').textContent.trim() : '';
                     const minPrice = row.querySelector('td.text-right div.valor-lote') ? row.querySelector('td.text-right div.valor-lote').textContent.trim() : '';
                     const type = row.querySelector('td:nth-of-type(3)') ? row.querySelector('td:nth-of-type(3)').textContent.trim() : '';
                     const status = row.querySelector('td:nth-of-type(4)') ? row.querySelector('td:nth-of-type(4)').textContent.trim() : '';
                     const errataWarnings = row.querySelector('td.text-center a span') ? row.querySelector('td.text-center a span').textContent.trim() : '';
+                    const person = row.querySelector('icone-tipo-clientela img') ? row.querySelector('icone-tipo-clientela img').title : '';
 
                     return {
                         lot,
                         min_price: minPrice,
                         type,
                         status,
+                        person,
                         errata_warnings: errataWarnings,
+                        link: link ? link + '/lote/' + lot.replace('Lote ', '').trim() : ''
                     };
                 });
-            });
+            }, notice.link);
 
             lots.push(...pageLots);
 
@@ -118,6 +121,7 @@ async function scrapeLots(browser, notice) {
     }
 }
 
+
 async function scrapeLotDetailsForLotsInBatch(browser, lots, link) {
     const allLotDetails = [];
 
@@ -131,6 +135,7 @@ async function scrapeLotDetailsForLotsInBatch(browser, lots, link) {
     return lots.map((lot, index) => ({
         ...lot,
         lot_table: allLotDetails[index] || [],
+        link
     }));
 }
 
