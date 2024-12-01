@@ -83,7 +83,7 @@ production:
     <<: *default
     database: meu_saldo_production
     username: meu_saldo
-    password: <%= ENV["MEU_SALDO_DATABASE_PASSWORD"] %>
+    password: <%= ENV["DB_PASSWORD"] %>
   cache:
     <<: *primary_production
     database: meu_saldo_production_cache

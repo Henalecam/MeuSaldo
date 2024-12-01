@@ -5,10 +5,10 @@
 #  id              :bigint           not null, primary key
 #  errata_warnings :string
 #  lot_number      :string
+#  lot_type        :string
 #  min_price       :string
 #  person          :string
 #  status          :string
-#  type            :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  notice_id       :bigint           not null

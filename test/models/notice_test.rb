@@ -7,6 +7,7 @@
 #  description :string
 #  end_date    :date
 #  link        :string
+#  lots_count  :integer
 #  start_date  :date
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

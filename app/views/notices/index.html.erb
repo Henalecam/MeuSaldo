@@ -1,0 +1,5 @@
+<% @notices.each do |notice| %>
+  <h3><%= link_to notice.description, notice_path(notice) %></h3>
+  <p><%= notice.start_date %> - <%= notice.end_date %></p>
+  <p>Lotes: <%= notice.lots_count %></p>
+<% end %>

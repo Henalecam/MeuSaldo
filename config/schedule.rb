@@ -5,7 +5,9 @@
 
 every 1.hour do
   runner "CryptoPriceService.new.update_crypto_prices"
+  runner "AuctionScraper.new.scrape_notices"
 end
+
 
 # Example:
 #

@@ -1,10 +1,11 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
+const axios = require('axios'); // Biblioteca para fazer requisições HTTP para o backend
 
 const BASE_URL = "http://www25.receita.fazenda.gov.br";
 
 // Max concurrent requests per batch to avoid memory overload
-const BATCH_SIZE = 100;
+const BATCH_SIZE = 50;
 
 async function scrapeNotices() {
     console.time('TotalRuntime');
@@ -38,6 +39,9 @@ async function scrapeNotices() {
         });
 
         const detailedNotices = await scrapeLotTablesInBatch(browser, rows);
+
+        // Salve os dados no banco de dados
+        await saveNoticesToDB(detailedNotices);
 
         await browser.close();
         console.timeEnd('TotalRuntime');
@@ -121,7 +125,6 @@ async function scrapeLots(browser, notice) {
     }
 }
 
-
 async function scrapeLotDetailsForLotsInBatch(browser, lots, link) {
     const allLotDetails = [];
 
@@ -183,14 +186,45 @@ async function scrapeLotTable(browser, link, lotId) {
     }
 }
 
-function saveToJson(data, fileName = 'full_notices.json') {
-    fs.writeFileSync(fileName, JSON.stringify(data, null, 4), 'utf-8');
+async function saveNoticesToDB(notices) {
+    const backendApiUrl = process.env.BACKEND_API_URL;  // Get the backend URL from the environment
+
+    if (!backendApiUrl) {
+        console.error("BACKEND_API_URL is not defined in .env");
+        return;
+    }
+
+    for (let notice of notices) {
+        // Salve o edital
+        const savedNotice = await axios.post(`${backendApiUrl}/notices`, {
+            code: notice.code,
+            description: notice.description,
+            start_date: notice.start_date,
+            end_date: notice.end_date,
+            lots_count: notice.lots,
+        });
+
+        // Salve os lotes associados a esse edital
+        for (let lot of notice.lots_details) {
+            if (lot.lot) {
+                await axios.post(`${backendApiUrl}/lots`, {
+                    notice_id: savedNotice.data.id,
+                    lot_number: lot.lot,
+                    min_price: lot.min_price,
+                    lot_type: lot.type,
+                    status: lot.status,
+                    person: lot.person,
+                    errata_warnings: lot.errata_warnings,
+                });
+            }
+        }
+    }
 }
 
 async function main() {
     const notices = await scrapeNotices();
     if (notices.length > 0) {
-        saveToJson(notices);
+        console.log("Notices saved successfully.");
     }
 }
 

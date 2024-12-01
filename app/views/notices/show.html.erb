@@ -1,0 +1,8 @@
+<h1><%= @notice.description %></h1>
+<p><%= @notice.code %></p>
+<p><%= @notice.start_date %> - <%= @notice.end_date %></p>
+
+<h2>Lotes:</h2>
+<% @notice.lots.each do |lot| %>
+  <p><%= lot.lot_number %>: <%= lot.min_price %> - <%= lot.status %></p>
+<% end %>

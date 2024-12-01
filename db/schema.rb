@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2024_12_01_035326) do
+ActiveRecord::Schema[8.1].define(version: 2024_12_01_052830) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -69,7 +69,7 @@ ActiveRecord::Schema[8.1].define(version: 2024_12_01_035326) do
     t.bigint "notice_id", null: false
     t.string "lot_number"
     t.string "min_price"
-    t.string "type"
+    t.string "lot_type"
     t.string "status"
     t.string "person"
     t.string "errata_warnings"
@@ -86,6 +86,7 @@ ActiveRecord::Schema[8.1].define(version: 2024_12_01_035326) do
     t.string "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "lots_count"
   end
 
   create_table "transactions", force: :cascade do |t|

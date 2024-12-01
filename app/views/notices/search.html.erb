@@ -1,0 +1,15 @@
+<h1>Buscar Lotes</h1>
+<%= form_tag(search_notices_path, method: :get) do %>
+  <%= label_tag :query, "Buscar por Macbook" %>
+  <%= text_field_tag :query %>
+  <%= submit_tag "Pesquisar" %>
+<% end %>
+
+<% if @results.any? %>
+  <h3>Resultados:</h3>
+  <% @results.each do |lot| %>
+    <p><%= lot.notice.description %> - Lote <%= lot.lot %>: <%= lot.min_price %> - <%= lot.status %></p>
+  <% end %>
+<% else %>
+  <p>Nenhum resultado encontrado.</p>
+<% end %>

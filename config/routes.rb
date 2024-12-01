@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "notices/index"
+  get "notices/show"
+  get "notices/search"
   get "sessions/new"
   devise_for :users
 
@@ -12,6 +15,12 @@ Rails.application.routes.draw do
       post :update_prices # Para criar a ação de atualização
     end
   end
+  resources :notices, only: [:index, :show, :create] do
+    collection do
+      get :search
+    end
+  end
+  resources :lots, only: [:create]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
