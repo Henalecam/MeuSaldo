@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   resources :categories, only: [ :index, :new, :create, :edit, :update, :destroy ]
   resources :transactions, only: [ :index, :new, :create, :edit, :update, :destroy ]
   resources :dashboards, only: [ :index ]
+  resources :cryptos, only: [:index, :show] do
+    collection do
+      post :update_prices # Para criar a ação de atualização
+    end
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

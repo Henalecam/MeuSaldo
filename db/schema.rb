@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2024_11_21_145752) do
+ActiveRecord::Schema[8.1].define(version: 2024_12_01_035326) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -32,6 +32,16 @@ ActiveRecord::Schema[8.1].define(version: 2024_11_21_145752) do
     t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
+  create_table "crypto_prices", force: :cascade do |t|
+    t.string "crypto_id"
+    t.decimal "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "symbol"
+    t.decimal "market_cap"
+  end
+
   create_table "goals", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
@@ -42,6 +52,40 @@ ActiveRecord::Schema[8.1].define(version: 2024_11_21_145752) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_goals_on_user_id"
+  end
+
+  create_table "lot_details", force: :cascade do |t|
+    t.bigint "lot_id", null: false
+    t.string "venue"
+    t.string "quantity"
+    t.string "unit"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lot_id"], name: "index_lot_details_on_lot_id"
+  end
+
+  create_table "lots", force: :cascade do |t|
+    t.bigint "notice_id", null: false
+    t.string "lot_number"
+    t.string "min_price"
+    t.string "type"
+    t.string "status"
+    t.string "person"
+    t.string "errata_warnings"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notice_id"], name: "index_lots_on_notice_id"
+  end
+
+  create_table "notices", force: :cascade do |t|
+    t.string "code"
+    t.string "description"
+    t.date "start_date"
+    t.date "end_date"
+    t.string "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -71,6 +115,8 @@ ActiveRecord::Schema[8.1].define(version: 2024_11_21_145752) do
   add_foreign_key "budgets", "users"
   add_foreign_key "categories", "users"
   add_foreign_key "goals", "users"
+  add_foreign_key "lot_details", "lots"
+  add_foreign_key "lots", "notices"
   add_foreign_key "transactions", "categories"
   add_foreign_key "transactions", "users"
 end

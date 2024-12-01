@@ -1,0 +1,8 @@
+<!-- app/views/cryptos/show.html.erb -->
+<h1><%= @crypto.name %></h1>
+
+<p><strong>Symbol:</strong> <%= @crypto.symbol %></p>
+<p><strong>Current Price (BRL):</strong> <%= number_to_currency(@crypto.price, unit: "R$") %></p>
+<p><strong>Market Cap:</strong> <%= number_to_currency(@crypto.market_cap, unit: "R$") %></p>
+
+<%= link_to "Back to List", cryptos_path %>

@@ -1,0 +1,25 @@
+<!-- app/views/cryptos/index.html.erb -->
+<h1>Cryptocurrencies</h1>
+
+<%= button_to "Update Prices", update_prices_cryptos_path, method: :post, class: "btn btn-primary", data: { confirm: "Are you sure you want to update prices?" } %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Symbol</th>
+      <th>Price (BRL)</th>
+      <th>Market Cap</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cryptos.each do |crypto| %>
+      <tr>
+        <td><%= link_to crypto.name, crypto_path(crypto.crypto_id) %></td>
+        <td><%= crypto.symbol %></td>
+        <td><%= number_to_currency(crypto.price, unit: "R$") %></td>
+        <td><%= number_to_currency(crypto.market_cap, unit: "R$") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
