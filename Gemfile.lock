@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 2ab0094ab6e94d30a5a424dc93c2aeb1066cc76b
+  revision: 2aa67ecba7018e985fc75c529204f3844615b7c4
   branch: main
   specs:
     actioncable (8.1.0.alpha)
@@ -297,7 +297,7 @@ GEM
     redis-client (0.22.2)
       connection_pool
     regexp_parser (2.9.2)
-    reline (0.5.11)
+    reline (0.5.12)
       io-console (~> 0.5)
     responders (3.1.1)
       actionpack (>= 5.2)
