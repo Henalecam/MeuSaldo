@@ -1,6 +1,6 @@
 # MeuSaldo
 
-Parado,desenvolver design e front
+Parado,desenvolver design e front até definir voltamos ao back
 
 O Gestor de Finanças Pessoais MeuSaldo é uma aplicação web desenvolvida com Ruby on Rails para ajudar os usuários a organizarem suas finanças de maneira simples e intuitiva. A plataforma permite o controle detalhado de receitas e despesas, além de fornecer ferramentas como gráficos, metas financeiras e orçamentos personalizados para facilitar a visualização e o planejamento financeiro.
 
